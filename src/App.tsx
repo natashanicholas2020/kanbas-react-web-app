@@ -35,12 +35,17 @@
 // export default App
 
 import Labs from "./Labs";
+import { HashRouter } from "react-router-dom";
 export default function App() {
   return (
-    <div>
-      <Labs />
-    </div>
+    <HashRouter>
+      <div>
+        <Labs />
+      </div>
+    </HashRouter>
 );}
+
+
 // The App component is the root component that imports other components
 // to break up the HTML rendering task amongst a hierarchy of components
 
