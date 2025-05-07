@@ -247,6 +247,10 @@ Please
 <a href="https://www.lipsum.com" id="wd-lipsum"> click here </a>
 to get dummy text<br/>
 
+Please
+<a href="https://github.com/natashanicholas2020/kanbas-react-web-app" id="wd-github"> click here </a>
+to get access Github.<br/>
+
 
       </div>
   );}
