@@ -4,28 +4,28 @@ export default function Modules() {
         <button type="button"
         // onClick={() => alert("Life is Good!")}
         id="wd-all-good">
-  Collapse All
-</button>
-<button type="button"
+        Collapse All
+        </button>
+
+        <button type="button"
         // onClick={() => alert("Life is Good!")}
         id="wd-all-good">
-  View Progress
-</button>
-
-<label  htmlFor="wd-select-one"> </label><br/>
-<select id="wd-select-one">
-   <option value="None">Publish None</option>
-   <option value="One">Publish One</option>
-   <option selected value="All">
-       Publish All</option>
-   </select>
-
-
-<button type="button"
+        View Progress
+        </button>
+        
+        <label  htmlFor="wd-select-one"> </label><br/>
+        <select id="wd-select-one">
+          <option value="None">Publish None</option>
+          <option value="One">Publish One</option>
+          <option selected value="All">Publish All</option>
+        </select>
+        
+        <button type="button"
         // onClick={() => alert("Life is Good!")}
         id="wd-all-good">
-  + Module
-</button>
+        + Module
+        </button>
+        
         <ul id="wd-modules">
           <li className="wd-module">
             <div className="wd-title">Week 1, Lecture 1 - Course Introduction, Syllabus, Agenda</div>
