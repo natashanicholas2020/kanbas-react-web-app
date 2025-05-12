@@ -2,6 +2,10 @@ export default function Lab1() {
     return (
       <div id="wd-lab1">
         <h2>Lab 1</h2>
+        <div></div>
+        <h4>Natasha Nicholas</h4>
+        <h4>CS5610 Summer 1 Section 4</h4>
+        <div></div>
         <h3>HTML Examples</h3>
       <div id="wd-h-tag">
         <h4>Heading Tags</h4>
@@ -107,7 +111,54 @@ Your favorite books (in no particular order)
               <td>2/10/21</td>
               <td>90</td>
             </tr>
-            <tr> ... </tr>
+            <tr>
+              <td>Q3</td>
+              <td>Class 3</td>
+              <td>2/12/21</td>
+              <td>70</td>
+            </tr>
+            <tr>
+              <td>Q4</td>
+              <td>Class 4</td>
+              <td>2/14/21</td>
+              <td>100</td>
+            </tr>
+            <tr>
+              <td>Q5</td>
+              <td>Class 5</td>
+              <td>2/16/21</td>
+              <td>100</td>
+            </tr>
+            <tr>
+              <td>Q6</td>
+              <td>Class 6</td>
+              <td>2/18/21</td>
+              <td>90</td>
+            </tr>
+            <tr>
+              <td>Q7</td>
+              <td>Class 7</td>
+              <td>2/19/21</td>
+              <td>95</td>
+            </tr>
+            <tr>
+              <td>Q8</td>
+              <td>Class 8</td>
+              <td>2/21/21</td>
+              <td>90</td>
+            </tr>
+            <tr>
+              <td>Q9</td>
+              <td>Class 9</td>
+              <td>3/10/21</td>
+              <td>85</td>
+            </tr>
+            <tr>
+              <td>Q10</td>
+              <td>Class 10</td>
+              <td>3/18/21</td>
+              <td>90</td>
+            </tr>
           </tbody>
           <tfoot>
             <tr>
@@ -136,7 +187,10 @@ Your favorite books (in no particular order)
     <input type="password" value="123@#$asd" id="wd-text-fields-password" />
     <br />
     <label htmlFor="wd-text-fields-first-name">First name:</label>
-    <input type="text" title="John" id="wd-text-fields-first-name" /> <br />
+    <input type="text" placeholder="John"
+           value="John"
+           title="The first name"
+           id="wd-text-fields-first-name" />
     <label htmlFor="wd-text-fields-last-name">Last name:</label>
     <input type="text" placeholder="Doe"
            value="Wonderland"
@@ -187,6 +241,13 @@ nec mi. Duis elit erat, volutpat sed justo non, ullamcorper consectetur odio.</t
   Hello World!
 </button>
 
+<p>Upload a file:</p>
+<button type="button"
+        id="wd-file-upload">
+  Choose File
+</button>
+<p>No file chosen</p>
+
 <h5 id="wd-radio-buttons">Radio buttons</h5>
 
 <label>Favorite movie genre:</label><br />
@@ -229,8 +290,6 @@ nec mi. Duis elit erat, volutpat sed justo non, ullamcorper consectetur odio.</t
    <option value="FANTASY">Fantasy</option>
    </select>
 
-   {/* not sure if the select many is working */}
-
 <h5>Select many</h5>
 <label  htmlFor="wd-select-many-genre"> Favorite movie genres: </label><br/>
 <select multiple id="wd-select-many-genre">
@@ -239,8 +298,6 @@ nec mi. Duis elit erat, volutpat sed justo non, ullamcorper consectetur odio.</t
    <option value="SCIFI"  selected> Science Fiction </option>
    <option value="FANTASY">         Fantasy         </option>
 </select>
-
-{/* need to connect anchor tag to github */}
 
 <h4>Anchor tag</h4>
 Please
@@ -254,11 +311,6 @@ to get access Github.<br/>
 
       </div>
   );}
-  // React function components implement algorithms that compute an HTML code 
-  // snippet and return the result of the computation. Other functions can aggregate 
-  // various snippets from different components into a larger, single HTML content 
-  // that browsers can then render on the screen. Here the component is just returning
-  // a hard coded, static HTML code snippet. Later chapters will
-  // introduce far more interesting algorithms to compute complex HTML
+
   
   
