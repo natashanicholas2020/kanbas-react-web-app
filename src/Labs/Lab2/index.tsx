@@ -10,9 +10,18 @@ import Zindex from "./Zindex"
 import Float from "./Float"
 import GridLayout from "./GridLayout"
 import Flex from "./Flex"
+import ReactIcons from "./ReactIcons"
+import BootstrapGrid from "./BootstrapGrids"
+import ScreenSizeLabel from "./ScreenSizeLabel.tsx"
+import BootstrapTable from "./BootstrapTables.tsx"
+import BootstrapList from "./BootstrapLists.tsx"
+import BootstrapForm from "./BootstrapForms.tsx"
+import BootstrapNav from "./BootstrapNavigation.tsx"
+import { Container } from "react-bootstrap";
 export default function Lab2() {
   return (
-    <div id="wd-lab2">
+    // <div id="wd-lab2">
+    <Container>
       <h2>Lab 2 - Cascading Style Sheets</h2>
       <h3>Styling with the STYLE attribute</h3>
       {/* is this meant to stay green and white  */}
@@ -89,5 +98,15 @@ This heading has same style as paragraph above
 <Float/>
 <GridLayout/>
 <Flex/>
+<ReactIcons/>
+<BootstrapGrid/>
+<ScreenSizeLabel/>
+<BootstrapTable/>
+<BootstrapList/>
+<BootstrapForm/>
+<BootstrapNav/>
 
-    </div>);}
+</Container>
+
+    // </div>
+    );}
