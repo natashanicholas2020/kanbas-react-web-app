@@ -38,13 +38,13 @@ export default function KambazNavigation() {
        className="text-white
                   bg-black text-center border-0">
        <LiaBookSolid className="fs-1 text-danger" />
-       Courses </ListGroup.Item>
+       Inbox </ListGroup.Item>
 
        <ListGroup.Item to="/Labs" as={Link}
        className="text-white
                   bg-black text-center border-0">
        <LiaBookSolid className="fs-1 text-danger" />
-       Courses </ListGroup.Item>
+       Labs </ListGroup.Item>
 
   </ListGroup>);}
 
