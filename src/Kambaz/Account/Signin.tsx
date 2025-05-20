@@ -15,6 +15,7 @@ export default function Signin() {
                 type="text"
                 placeholder="Username"
                 className="form-control-lg"
+                defaultValue="jdoe"
               />
             </Form.Group>
 
@@ -24,13 +25,14 @@ export default function Signin() {
                 type="password"
                 placeholder="Password"
                 className="form-control-lg"
+                defaultValue="password123"
               />
             </Form.Group>
 
             <Button
               id="wd-signin-btn"
-              as="a" 
-              href="/Kambaz/Account/Profile" 
+              as="a"
+              href="/Kambaz/Account/Profile"
               variant="primary"
               size="lg"
               className="w-100 mb-3"
@@ -49,5 +51,3 @@ export default function Signin() {
     </div>
   );
 }
-
-

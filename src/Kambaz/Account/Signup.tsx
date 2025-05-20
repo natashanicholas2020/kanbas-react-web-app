@@ -15,6 +15,7 @@ export default function Signup() {
                 type="text"
                 placeholder="Username"
                 className="form-control-lg"
+                defaultValue="nnicho"
               />
             </Form.Group>
 
@@ -24,6 +25,7 @@ export default function Signup() {
                 type="password"
                 placeholder="Password"
                 className="form-control-lg"
+                defaultValue="password123"
               />
             </Form.Group>
 
@@ -33,6 +35,7 @@ export default function Signup() {
                 type="password"
                 placeholder="Verify Password"
                 className="form-control-lg"
+                defaultValue="password123" 
               />
             </Form.Group>
 
@@ -58,4 +61,3 @@ export default function Signup() {
     </div>
   );
 }
-
