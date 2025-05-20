@@ -57,9 +57,14 @@ export default function AssignmentEditor() {
         </Form.Group>
 
         <Form.Group controlId="wd-assign-to" className="mb-3">
-          <Form.Label>Assign Assignment to</Form.Label>
-          <Form.Control type="text" placeholder="Everyone" />
-        </Form.Group>
+  <Form.Label>Assign Assignment to</Form.Label>
+  <Form.Control
+    type="text"
+    placeholder="Everyone"
+    defaultValue="Everyone"
+  />
+</Form.Group>
+
 
         <Form.Group controlId="wd-online-entry-options" className="mb-3">
           <Form.Label>Online Entry Options</Form.Label>
@@ -69,6 +74,22 @@ export default function AssignmentEditor() {
           <Form.Check type="checkbox" label="Student Annotation" />
           <Form.Check type="checkbox" label="File Uploads" />
         </Form.Group>
+
+        <Row>
+  <Col sm={6}>
+    <Form.Group controlId="wd-available-from" className="mb-3">
+      <Form.Label>Available From</Form.Label>
+      <Form.Control type="date" defaultValue="2025-05-06" />
+    </Form.Group>
+  </Col>
+  <Col sm={6}>
+    <Form.Group controlId="wd-available-until" className="mb-3">
+      <Form.Label>Available Until</Form.Label>
+      <Form.Control type="date" defaultValue="2025-05-20" />
+    </Form.Group>
+  </Col>
+</Row>
+
 
         <Row>
           <Col>
