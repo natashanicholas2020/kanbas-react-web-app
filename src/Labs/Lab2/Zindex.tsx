@@ -1,6 +1,5 @@
-// ISNT WORKING
 export default function Zindex() {
-    return (
+  return (
 <div id="wd-z-index">
   <h2>Z index</h2>
   <div className="wd-pos-relative">
@@ -20,7 +19,5 @@ export default function Zindex() {
   </div><br /><br /><br /><br /><br /><br /><br />
 </div>
 
-
-
-
-    );}
+  );
+}
