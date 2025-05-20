@@ -1,6 +1,7 @@
 import VariablesAndConstants from "./VariablesandConstants";
 import VariableTypes from "./VariableTypes";
 import BooleanVariables from "./BooleanVariables";
+import IfElse from "./IfElse";
 export default function Lab3() {
   return (
     <div id="wd-lab3">
@@ -8,6 +9,7 @@ export default function Lab3() {
       <VariablesAndConstants/>
       <VariableTypes/>
       <BooleanVariables/>
+      <IfElse/>
     </div>
   );
 }
