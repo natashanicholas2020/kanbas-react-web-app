@@ -8,6 +8,7 @@ export default function Assignments() {
   const assignments = db.assignments;
   return (
     <div id="wd-assignments" className="p-3">
+      
       <div className="d-flex align-items-center mb-3">
         <Form.Control
           placeholder="Search for Assignments"
