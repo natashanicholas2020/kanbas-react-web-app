@@ -1,7 +1,11 @@
 import { FaSearch, FaPlus } from "react-icons/fa";
 import { Button, Form } from "react-bootstrap";
+import { useParams } from "react-router";
+import * as db from "../../Database";
 
 export default function Assignments() {
+  const { cid } = useParams();
+  const assignments = db.assignments;
   return (
     <div id="wd-assignments" className="p-3">
       <div className="d-flex align-items-center mb-3">
