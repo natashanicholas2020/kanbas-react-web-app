@@ -8,7 +8,7 @@ import Zoom from "./Zoom";
 import Grades from "./Grades";
 import Quizzes from "./Quizzes";
 import PeopleTable from "./People/Table";
-import { Navigate, Route, Routes, useParams, useLocation} from "react-router";
+import { Route, Routes, useParams, useLocation} from "react-router";
 import { FaAlignJustify } from "react-icons/fa";
 import { courses } from "../Database";
 export default function Courses() {
