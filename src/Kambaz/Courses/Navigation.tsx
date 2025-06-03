@@ -1,8 +1,8 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useParams} from "react-router-dom";
 
 export default function CourseNavigation() {
   const { pathname } = useLocation();
-  const courseId = "1234"; // You can dynamically pass this as a prop if needed
+  const {cid} = useParams(); 
   const links = [
     { label: "Home",        id: "wd-course-home-link" },
     { label: "Modules",     id: "wd-course-modules-link" },
@@ -17,7 +17,7 @@ export default function CourseNavigation() {
   return (
     <div id="wd-courses-navigation" className="wd list-group fs-5 rounded-0">
       {links.map(({ label, id }) => {
-        const path = `/Kambaz/Courses/${courseId}/${label}`;
+        const path = `/Kambaz/Courses/${cid}/${label}`;
         const isActive = pathname.includes(label);
         return (
           <Link
