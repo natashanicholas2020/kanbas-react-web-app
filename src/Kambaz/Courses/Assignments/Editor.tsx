@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
-import { addAssignment, editAssignment, updateAssignment, deleteAssignment } from "./reducer";
+import { updateAssignment, } from "./reducer";
 import { Form, Button } from "react-bootstrap";
 
 interface Assignment {
@@ -20,12 +20,10 @@ export default function AssignmentEditor() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // Select assignment by _id
   const assignment = useSelector((state: any) =>
     state.assignments.assignments.find((a: Assignment) => a._id === aid)
   );
 
-  // Local state for editing fields
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [points, setPoints] = useState<number | "">("");
@@ -33,13 +31,12 @@ export default function AssignmentEditor() {
   const [availableFrom, setAvailableFrom] = useState("");
   const [availableUntil, setAvailableUntil] = useState("");
 
-  // Initialize local state when assignment loads or changes
   useEffect(() => {
     if (assignment) {
       setTitle(assignment.title || "");
       setDescription(assignment.description || "");
       setPoints(assignment.points ?? "");
-      setDueDate(assignment.dueDate ? assignment.dueDate.slice(0, 16) : ""); // format for datetime-local input
+      setDueDate(assignment.dueDate ? assignment.dueDate.slice(0, 16) : "");
       setAvailableFrom(assignment.availableFrom ? assignment.availableFrom.slice(0, 16) : "");
       setAvailableUntil(assignment.availableUntil ? assignment.availableUntil.slice(0, 16) : "");
     }
