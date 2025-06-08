@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import { add } from "./addReducer";
-import { Form, Button } from "react-bootstrap"; 
+import { FormControl , Button} from "react-bootstrap"; 
 export default function AddRedux() {
   const [a, setA] = useState(12);
   const [b, setB] = useState(23);
@@ -11,9 +11,9 @@ export default function AddRedux() {
     <div className="w-25" id="wd-add-redux">
       <h1>Add Redux</h1>
       <h2>{a} + {b} = {sum}</h2>
-      <Form.Control type="number" defaultValue={a}
+      <FormControl type="number" defaultValue={a}
         onChange={(e) => setA(parseInt(e.target.value))} />
-      <Form.Control type="number" defaultValue={b}
+      <FormControl type="number" defaultValue={b}
         onChange={(e) => setB(parseInt(e.target.value))} />
       <Button id="wd-add-redux-click"
               onClick={() => dispatch(add({ a, b }))}>

@@ -1,16 +1,16 @@
 import { useState } from "react";
-import { Form } from "react-bootstrap"; 
+import { FormControl } from "react-bootstrap"; 
 export default function ObjectStateVariable() {
   const [person, setPerson] = useState({ name: "Peter", age: 24 });
   return (
     <div>
       <h2>Object State Variables</h2>
       <pre>{JSON.stringify(person, null, 2)}</pre>
-      <Form.Control
+      <FormControl
         defaultValue={person.name}
         onChange={(e) => setPerson({ ...person, name: e.target.value })}
       />
-      <Form.Control
+      <FormControl
         defaultValue={person.age}
         onChange={(e) => setPerson({ ...person,
                                      age: parseInt(e.target.value) })}
