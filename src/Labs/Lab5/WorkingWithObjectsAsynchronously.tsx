@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FormControl } from "react-bootstrap"; 
 import * as client from "./client";
 
@@ -40,7 +40,7 @@ export default function WorkingWithObjectsAsynchronously() {
           onChange={(e) => setAssignment({ ...assignment, completed: e.target.checked }) } />
         <label className="form-check-label" htmlFor="wd-completed"> Completed </label>
       </div>
-      
+
       <button className="btn btn-primary me-2" onClick={() => updateTitle(assignment.title)} >
         Update Title
       </button>
