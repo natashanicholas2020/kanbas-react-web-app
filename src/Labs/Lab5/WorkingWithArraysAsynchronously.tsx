@@ -2,9 +2,15 @@ import React, { useState, useEffect } from "react";
 import ListGroup from 'react-bootstrap/ListGroup';
 import { FaTrash } from 'react-icons/fa';
 import * as client from "./client";
+import { FaPlusCircle } from "react-icons/fa";
 
 export default function WorkingWithArraysAsynchronously() {
   const [todos, setTodos] = useState<any[]>([]);
+
+  const createTodo = async () => {
+    const todos = await client.createTodo();
+    setTodos(todos);
+  };
 
   const fetchTodos = async () => {
     const todos = await client.fetchTodos();
@@ -22,7 +28,10 @@ export default function WorkingWithArraysAsynchronously() {
   return (
     <div id="wd-asynchronous-arrays">
       <h3>Working with Arrays Asynchronously</h3>
-      <h4>Todos</h4>
+      <h4>Todos
+      <FaPlusCircle onClick={createTodo} className="text-success float-end fs-3"
+                         id="wd-create-todo" />
+      </h4>
       <ListGroup>
         {todos.map((todo) => (
           <ListGroup.Item key={todo.id}>
