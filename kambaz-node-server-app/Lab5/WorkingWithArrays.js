@@ -36,6 +36,13 @@ export default function WorkingWithArrays(app) {
     res.json(todos);
   });
 
+  app.delete("/lab5/todos/:id", (req, res) => {
+    const { id } = req.params;
+    const todoIndex = todos.findIndex((t) => t.id === parseInt(id));
+    todos.splice(todoIndex, 1);
+    res.sendStatus(200);
+  });
+
   app.get("/lab5/todos/:id/completed", (req, res) => {
     const { id } = req.params;
     const todoIndex = todos.findIndex((t) => t.id === parseInt(id));
@@ -62,7 +69,7 @@ export default function WorkingWithArrays(app) {
     todos.push(newTodo);
     res.json(todos);
   });
-  
+
   app.post("/lab5/todos", (req, res) => {
     const newTodo = { ...req.body,  id: new Date().getTime() };
     todos.push(newTodo);
