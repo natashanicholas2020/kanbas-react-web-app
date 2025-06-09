@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import * as client from "./client";
 import { FormControl } from "react-bootstrap"; 
+import * as client from "./client";
 
 export default function WorkingWithObjectsAsynchronously() {
   const [assignment, setAssignment] = useState<any>({});
@@ -40,9 +40,11 @@ export default function WorkingWithObjectsAsynchronously() {
           onChange={(e) => setAssignment({ ...assignment, completed: e.target.checked }) } />
         <label className="form-check-label" htmlFor="wd-completed"> Completed </label>
       </div>
+      
       <button className="btn btn-primary me-2" onClick={() => updateTitle(assignment.title)} >
         Update Title
       </button>
+
       <pre>{JSON.stringify(assignment, null, 2)}</pre>
       <hr />
     </div>
