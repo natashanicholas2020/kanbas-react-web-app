@@ -28,7 +28,7 @@ export default function WorkingWithArrays() {
       <hr />
       <h3>Filtering Array Items</h3>
       <a id="wd-retrieve-completed-todos" className="btn btn-primary"
-      href={`${API}?completed=true`}>
+        href={`${API}?completed=true`}>
         Get Completed Todos
       </a><hr/>
       <h3>Creating new Items in an Array</h3>
@@ -47,6 +47,38 @@ export default function WorkingWithArrays() {
         onChange={(e) => setTodo({ ...todo, id: e.target.value })}/>
       <FormControl defaultValue={todo.title} className="w-50 float-start"
              onChange={(e) => setTodo({ ...todo, title: e.target.value }) }/>
+      <br /><br /><hr />
+      <a href={`${API}/${todo.id}/completed/${todo.completed}`} className="btn btn-primary float-end">
+  Update Completed Todo
+</a>
+
+<FormControl
+  defaultValue={todo.id}
+  className="w-25 float-start me-2"
+  onChange={(e) => setTodo({ ...todo, id: e.target.value })}
+/>
+
+<div className="form-check w-50 float-start">
+  <input
+    type="checkbox"
+    className="form-check-input"
+    id="completedCheckbox"
+    checked={todo.completed}
+    onChange={(e) => setTodo({ ...todo, completed: e.target.checked })}
+  />
+  <label className="form-check-label" htmlFor="completedCheckbox">
+    Completed
+  </label>
+</div>
+
+<br /><br /><hr />
+
+      <a href={`${API}/${todo.id}/description/${todo.description}`} className="btn btn-primary float-end">
+        Update Todo Description</a>
+      <FormControl defaultValue={todo.id} className="w-25 float-start me-2"
+        onChange={(e) => setTodo({ ...todo, id: e.target.value })}/>
+      <FormControl defaultValue={todo.description} className="w-50 float-start"
+             onChange={(e) => setTodo({ ...todo, description: e.target.value }) }/>
       <br /><br /><hr />
 
 
