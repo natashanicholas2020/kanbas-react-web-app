@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from "uuid";
 import Session from "./Account/Session";
 import * as userClient from "./Account/client";
 import { useSelector } from "react-redux";
+import * as courseClient from "./Courses/client";
 
 
 export default function Kambaz() {
@@ -24,10 +25,10 @@ export default function Kambaz() {
     setCourses([ ...courses, newCourse ]);
   };
 
-
-  const deleteCourse = (courseId: any) => {
+  const deleteCourse = async (courseId: string) => {
+    const status = await courseClient.deleteCourse(courseId);
     setCourses(courses.filter((course) => course._id !== courseId));
-  };
+  }
 
   const updateCourse = () => {
     setCourses(
