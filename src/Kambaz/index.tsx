@@ -5,6 +5,7 @@ import Courses from "./Courses";
 import * as db from "./Database";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import Session from "./Account/Session";
 
 
 export default function Kambaz() {
@@ -31,6 +32,7 @@ export default function Kambaz() {
     );
   };
   return (
+    <Session>
     <div id="wd-kambaz">
       <Navigation />
       <div className="wd-main-content-offset p-3">
@@ -49,4 +51,6 @@ export default function Kambaz() {
           <Route path="Courses/:cid/*" element={<Courses courses={courses} />} />
         </Routes>
       </div>
-    </div>);}
+    </div>
+    </Session>
+    );}
