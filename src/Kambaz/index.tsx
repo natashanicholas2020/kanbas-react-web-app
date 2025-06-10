@@ -30,7 +30,8 @@ export default function Kambaz() {
     setCourses(courses.filter((course) => course._id !== courseId));
   }
 
-  const updateCourse = () => {
+  const updateCourse = async () => {
+    await courseClient.updateCourse(course);
     setCourses(
       courses.map((c) => {
         if (c._id === course._id) {
@@ -53,6 +54,7 @@ export default function Kambaz() {
   useEffect(() => {
     fetchCourses();
   }, [currentUser]);
+
 
   return (
     <Session>
