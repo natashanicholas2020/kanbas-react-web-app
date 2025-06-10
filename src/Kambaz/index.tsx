@@ -2,24 +2,31 @@ import Navigation from "./Navigation";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Dashboard from "./Dashboard";
 import Courses from "./Courses";
-import * as db from "./Database";
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import { v4 as uuidv4 } from "uuid";
 import Session from "./Account/Session";
+import * as userClient from "./Account/client";
+import { useSelector } from "react-redux";
 
 
 export default function Kambaz() {
-  const [courses, setCourses] = useState<any[]>(db.courses);
+  const [courses, setCourses] = useState<any[]>([]);
+
+  const { currentUser } = useSelector((state: any) => state.accountReducer);
+
   const [course, setCourse] = useState<any>({
     _id: "1234", name: "New Course", number: "New Number",
     startDate: "2023-09-10", endDate: "2023-12-15", description: "New Description",
   });
+
   const addNewCourse = () => {
     setCourses([...courses, { ...course, _id: uuidv4() }]);
   };
+
   const deleteCourse = (courseId: any) => {
     setCourses(courses.filter((course) => course._id !== courseId));
   };
+
   const updateCourse = () => {
     setCourses(
       courses.map((c) => {
@@ -31,6 +38,19 @@ export default function Kambaz() {
       })
     );
   };
+
+  const fetchCourses = async () => {
+    try {
+      const courses = await userClient.findMyCourses();
+      setCourses(courses);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  useEffect(() => {
+    fetchCourses();
+  }, [currentUser]);
+
   return (
     <Session>
     <div id="wd-kambaz">
