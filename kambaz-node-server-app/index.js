@@ -6,6 +6,7 @@ import UserRoutes from "./Kambaz/Users/routes.js";
 import session from "express-session";
 import "dotenv/config";
 import CourseRoutes from "./Kambaz/Courses/routes.js";
+import ModuleRoutes from "./Kambaz/Modules/routes.js";
 
 const app = express()
 UserRoutes(app);
@@ -32,6 +33,7 @@ app.use(
 app.use(session(sessionOptions));  
 
 CourseRoutes(app);
+ModuleRoutes(app);
 app.use(express.json());
 Lab5(app);
 Hello(app)

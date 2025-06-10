@@ -7,6 +7,7 @@ import ModuleControlButtons from "./ModuleControlButtons";
 import { BsGripVertical } from "react-icons/bs";
 import { useSelector, useDispatch } from "react-redux";
 import { setModules, addModule, editModule, updateModule, deleteModule } from "./reducer";
+import * as modulesClient from "./client";
 
 export default function Modules() {
   const { cid } = useParams();
@@ -18,6 +19,12 @@ export default function Modules() {
     const modules = await coursesClient.findModulesForCourse(cid as string);
     dispatch(setModules(modules));
   };
+
+  const removeModule = async (moduleId: string) => {
+    await modulesClient.deleteModule(moduleId);
+    dispatch(deleteModule(moduleId));
+  };
+
   useEffect(() => {
     fetchModules();
   }, []);
@@ -70,7 +77,7 @@ export default function Modules() {
 
                 <ModuleControlButtons
                   moduleId={module._id}
-                  deleteModule={(moduleId) => dispatch(deleteModule(moduleId))}
+                  deleteModule={(moduleId) => removeModule(moduleId)}
                   editModule={(moduleId) => dispatch(editModule(moduleId))}
                 />
               </div>
