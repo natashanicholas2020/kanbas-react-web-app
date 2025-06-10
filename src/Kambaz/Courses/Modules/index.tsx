@@ -22,6 +22,12 @@ export default function Modules() {
     fetchModules();
   }, []);
 
+  const createModuleForCourse = async () => {
+    if (!cid) return;
+    const newModule = { name: moduleName, course: cid };
+    const module = await coursesClient.createModuleForCourse(cid, newModule);
+    dispatch(addModule(module));
+  };
 
   if (!cid) return <div>No course selected.</div>;
 
@@ -30,10 +36,7 @@ export default function Modules() {
       <ModulesControls
         moduleName={moduleName}
         setModuleName={setModuleName}
-        addModule={() => {
-          dispatch(addModule({ name: moduleName, course: cid }));
-          setModuleName("");
-        }}
+        addModule={createModuleForCourse}
       />
 
       <ListGroup id="wd-modules" className="rounded-0">
