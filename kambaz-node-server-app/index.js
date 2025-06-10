@@ -6,10 +6,10 @@ import UserRoutes from "./Kambaz/Users/routes.js";
 import session from "express-session";
 import "dotenv/config";
 import CourseRoutes from "./Kambaz/Courses/routes.js";
-import ModuleRoutes from "./Kambaz/Modules/routes.js";
+// import ModuleRoutes from "./Kambaz/Modules/routes.js";
+import WorkingWithArrays from './Lab5/WorkingWithArrays.js';
 
 const app = express()
-UserRoutes(app);
 app.use(
     cors({
       credentials: true,
@@ -31,10 +31,12 @@ app.use(
     };
   }
 app.use(session(sessionOptions));  
-
-CourseRoutes(app);
-ModuleRoutes(app);
 app.use(express.json());
+
+UserRoutes(app);
+CourseRoutes(app);
+// ModuleRoutes(app);
 Lab5(app);
 Hello(app)
+WorkingWithArrays(app);
 app.listen(process.env.PORT || 4000)
