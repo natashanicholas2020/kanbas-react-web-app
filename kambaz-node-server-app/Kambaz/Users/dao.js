@@ -1,6 +1,7 @@
 import db from "../Database/index.js";
 import { v4 as uuidv4 } from "uuid";
 import * as courseDao from "../Courses/dao.js";
+import * as enrollmentsDao from "../Enrollments/dao.js";
 
 let { users } = db;
 export const createUser = (user) => (users = [...users, { ...user, _id: uuidv4() }]);
@@ -13,6 +14,14 @@ export const updateUser = (userId, user) => (users = users.map((u) => (u._id ===
 export const deleteUser = (userId) => (users = users.filter((u) => u._id !== userId));
 
 export default function UserRoutes(app) {
+
+    const createCourse = (req, res) => {
+        const currentUser = req.session["currentUser"];
+        const newCourse = courseDao.createCourse(req.body);
+        enrollmentsDao.enrollUserInCourse(currentUser._id, newCourse._id);
+        res.json(newCourse);
+      };
+    app.post("/api/users/current/courses", createCourse);
 
     const findCoursesForEnrolledUser = (req, res) => {
       let { userId } = req.params;
