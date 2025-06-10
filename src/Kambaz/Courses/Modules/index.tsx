@@ -36,6 +36,11 @@ export default function Modules() {
     dispatch(addModule(module));
   };
 
+  const saveModule = async (module: any) => {
+    await modulesClient.updateModule(module);
+    dispatch(updateModule(module));
+  };
+
   if (!cid) return <div>No course selected.</div>;
 
   return (
@@ -66,7 +71,7 @@ export default function Modules() {
                       }
                       onKeyDown={(e) => {
                         if (e.key === "Enter") {
-                          dispatch(updateModule({ ...module, editing: false }));
+                          saveModule({ ...module, editing: false });
                         }
                       }}
                       onBlur={() => dispatch(updateModule({ ...module, editing: false }))}
@@ -90,7 +95,6 @@ export default function Modules() {
                       className="wd-lesson p-3 ps-1"
                     >
                       {lesson.name}
-                      {/* Add LessonControlButtons if needed */}
                     </ListGroup.Item>
                   ))}
                 </ListGroup>
