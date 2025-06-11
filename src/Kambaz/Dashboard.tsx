@@ -1,8 +1,5 @@
-import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Row, Col, Card, Button, FormControl } from "react-bootstrap";
-import { v4 as uuidv4 } from "uuid";
-import * as db from "./Database";
 
 export default function Dashboard(
   { courses, course, setCourse, addNewCourse,
