@@ -1,10 +1,13 @@
 import { Link, useLocation, useParams } from "react-router-dom";
 import { Card, Row, Col } from "react-bootstrap";
+import { courses } from "../Database";
 
 export default function CourseNavigation() {
-  const { id } = useParams();
+  const { cid } = useParams();
 
   const { pathname } = useLocation();
+
+  const course = courses.find((course) => course._id === cid);
 
   const links = ["Home", "Modules", "Piazza", "Zoom", "Assignments", "Quizzes", "Grades", "People"];
   
@@ -13,7 +16,7 @@ export default function CourseNavigation() {
     <div id="wd-courses-navigation" className="wd list-group fs-5 rounded-0">
 
       {links.map((label) => {
-        const to = `/Kambaz/Courses/${id}/${label}`;
+        const to = `/Kambaz/Courses/${cid}/${label}`;
         const isActive = pathname.includes(`/${label}`);
         const linkId = `wd-course-${label.toLowerCase()}-link`;
 
