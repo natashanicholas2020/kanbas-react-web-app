@@ -22,7 +22,7 @@ export default function Courses({ courses }: { courses: any[]; }) {
         {course && course.name} &gt; {pathname.split("/")[4]}
       </h2> <hr />
       <div className="d-flex">
-        <div className="d-n\one d-md-block">
+      <div className="d-none d-md-block">
           <CourseNavigation />
         </div>
         <div className="flex-fill">

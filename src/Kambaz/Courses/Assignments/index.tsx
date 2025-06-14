@@ -62,13 +62,11 @@ import {
 export default function Assignments() {
   const { cid } = useParams();
 
-  // Local state for search/filtering by assignment title
   const [assignmentTitle, setAssignmentTitle] = useState("");
 
   const { assignments } = useSelector((state: any) => state.assignmentsReducer);
   const dispatch = useDispatch();
 
-  // Filter assignments by course and search text (case insensitive)
   const filteredAssignments = assignments.filter(
     (a: any) =>
       a.course === cid &&
@@ -77,7 +75,6 @@ export default function Assignments() {
 
   return (
     <div>
-      {/* Controls: search, add assignment/group */}
       <AssignmentControls
         assignmentTitle={assignmentTitle}
         setAssignmentTitle={setAssignmentTitle}
@@ -131,13 +128,12 @@ export default function Assignments() {
               />
             </div>
 
-            {/* Placeholder for lessons or subitems - here you can add more detailed components */}
             <ListGroup className="wd-lessons rounded-0">
               <ListGroup.Item className="wd-lesson p-3 ps-1 d-flex justify-content-between align-items-center">
                 <div>
                   <BsGripVertical className="me-2 fs-3" />
                   <a
-                    href={`#/Kanbas/Courses/${cid}/Assignments/${assignment._id}`}
+                    href={`#/Kambaz/Courses/${cid}/Assignments/${assignment._id}`}
                     className="wd-assignment-link"
                   >
                     View Assignment
