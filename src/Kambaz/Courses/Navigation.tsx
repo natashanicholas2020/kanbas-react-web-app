@@ -1,5 +1,4 @@
 import { Link, useLocation, useParams } from "react-router-dom";
-import { Card, Row, Col } from "react-bootstrap";
 import { courses } from "../Database";
 
 export default function CourseNavigation() {
