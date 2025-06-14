@@ -18,19 +18,27 @@ export default function PathParameters() {
          onChange={(e) => setB(e.target.value)} />
   <a id="wd-query-parameter-add"
      href={`${REMOTE_SERVER}/lab5/calculator?operation=add&a=${a}&b=${b}`}>
-    Add {a} + {b}
+      <div>
+     Add {a} + {b} 
+     </div>
   </a>
   <a id="wd-query-parameter-subtract"
      href={`${REMOTE_SERVER}/lab5/calculator?operation=subtract&a=${a}&b=${b}`}>
-    Subtract {a} - {b}
+      <div>
+     Subtract {a} - {b} 
+     </div>
   </a>
   <a id="wd-query-parameter-multiply"
      href={`${REMOTE_SERVER}/lab5/calculator?operation=multiply&a=${a}&b=${b}`}>
-    Multiply {a} * {b}
+      <div>
+     Multiply {a} * {b} 
+     </div>
   </a>
   <a id="wd-query-parameter-divide"
      href={`${REMOTE_SERVER}/lab5/calculator?operation=divide&a=${a}&b=${b}`}>
-    Divide {a} / {b}
+      <div>
+     Divide {a} / {b} 
+     </div>
   </a>
   <hr />
 </div>
