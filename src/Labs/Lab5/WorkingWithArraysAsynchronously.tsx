@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 import { FaTrash } from "react-icons/fa";
 import { FaPlusCircle } from "react-icons/fa";
+import { TiDelete } from "react-icons/ti";
 
 import * as client from "./client";
 
@@ -16,6 +17,12 @@ export default function WorkingWithArraysAsynchronously() {
   const postTodo = async () => {
     const newTodo = await client.postTodo({ title: "New Posted Todo", completed: false, });
     setTodos([...todos, newTodo]);
+  };
+
+  const deleteTodo = async (todo: any) => {
+    await client.deleteTodo(todo);
+    const newTodos = todos.filter((t) => t.id !== todo.id);
+    setTodos(newTodos);
   };
 
   const fetchTodos = async () => {
@@ -42,8 +49,8 @@ export default function WorkingWithArraysAsynchronously() {
       <ListGroup>
         {todos.map((todo) => (
           <ListGroup.Item key={todo.id}>
-            <FaTrash onClick={() => removeTodo(todo)}
-                     className="text-danger float-end mt-1" id="wd-remove-todo"/>
+            <FaTrash onClick={() => removeTodo(todo)} className="text-danger float-end mt-1" id="wd-remove-todo"/>
+            <TiDelete onClick={() => deleteTodo(todo)} className="text-danger float-end me-2 fs-3" id="wd-delete-todo" />
                     
             <input type="checkbox" className="form-check-input me-2"
                    defaultChecked={todo.completed}/>
