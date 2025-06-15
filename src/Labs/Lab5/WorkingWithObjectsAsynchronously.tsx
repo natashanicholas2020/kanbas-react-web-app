@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { FormControl } from "react-bootstrap"; 
+import React, { useEffect, useState } from "react";
 import * as client from "./client";
+import { FormControl, FormCheck} from "react-bootstrap"; 
 
 export default function WorkingWithObjectsAsynchronously() {
   const [assignment, setAssignment] = useState<any>({});
@@ -25,15 +25,13 @@ export default function WorkingWithObjectsAsynchronously() {
       <h4>Assignment</h4>
       <FormControl defaultValue={assignment.title} className="mb-2"
         onChange={(e) => setAssignment({ ...assignment, title: e.target.value }) } />
-      <FormControl
-        as="textarea"
-        rows={3}
-        defaultValue={assignment.description}
-        className="mb-2"
-        onChange={(e) => setAssignment({ ...assignment, description: e.target.value })}
-      />
+
+      <FormControl as="textarea" rows={3} defaultValue={assignment.description} className="mb-2"
+        onChange={(e) => setAssignment({ ...assignment, description: e.target.value }) } />
+
       <FormControl type="date" className="mb-2" defaultValue={assignment.due}
         onChange={(e) => setAssignment({ ...assignment, due: e.target.value })} />
+
       <div className="form-check form-switch">
         <input className="form-check-input" type="checkbox" id="wd-completed"
                defaultChecked={assignment.completed}

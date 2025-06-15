@@ -1,5 +1,8 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import * as client from "./client";
+
+const REMOTE_SERVER = import.meta.env.VITE_REMOTE_SERVER;
 
 export default function HttpClient() {
   const [welcomeOnClick, setWelcomeOnClick] = useState("");
@@ -15,10 +18,10 @@ export default function HttpClient() {
     const welcome = await client.fetchWelcomeMessage();
     setWelcomeOnLoad(welcome);
   };
-
   useEffect(() => {
     fetchWelcomeOnLoad();
   }, []);
+
 
   return (
     <div>
