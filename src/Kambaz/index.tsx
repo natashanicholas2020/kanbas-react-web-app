@@ -16,16 +16,21 @@ import { useEffect } from "react";
 
 export default function Kambaz() {
   const [courses, setCourses] = useState<any[]>([]);
+
   const [course, setCourse] = useState<any>({
     _id: "1234", name: "New Course", number: "New Number",
     startDate: "2023-09-10", endDate: "2023-12-15", description: "New Description",
   });
-  const addNewCourse = () => {
-    setCourses([...courses, { ...course, _id: uuidv4() }]);
+
+  const addNewCourse = async () => {
+    const newCourse = await userClient.createCourse(course);
+    setCourses([ ...courses, newCourse ]);
   };
+
   const deleteCourse = (courseId: any) => {
     setCourses(courses.filter((course) => course._id !== courseId));
   };
+
   const updateCourse = () => {
     setCourses(
       courses.map((c) => {
@@ -37,7 +42,9 @@ export default function Kambaz() {
       })
     );
   };
+
   const { currentUser } = useSelector((state: any) => state.accountReducer);
+
   const fetchCourses = async () => {
     try {
       const courses = await userClient.findMyCourses();
@@ -52,7 +59,7 @@ export default function Kambaz() {
 
 
   return (
-    // <Session>
+    <Session>
       <div id="wd-kambaz">
         <KambazNavigation />
         <div className="wd-main-content-offset p-3">
@@ -76,6 +83,6 @@ export default function Kambaz() {
           </Routes>
         </div>
       </div>
-    // </Session>
+     </Session>
 
 );}
