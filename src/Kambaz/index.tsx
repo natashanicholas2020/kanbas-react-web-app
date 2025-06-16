@@ -8,7 +8,7 @@ import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import ProtectedRoute from "./Account/ProtectedRoute";
 import Session from "./Account/Session";
-import * as client from "./Courses/client";
+import * as courseClient from "./Courses/client";
 import * as userClient from "./Account/client";
 import { useSelector } from "react-redux"; 
 import { useEffect } from "react";         
@@ -27,7 +27,8 @@ export default function Kambaz() {
     setCourses([ ...courses, newCourse ]);
   };
 
-  const deleteCourse = (courseId: any) => {
+  const deleteCourse = async (courseId: string) => {
+    const status = await courseClient.deleteCourse(courseId);
     setCourses(courses.filter((course) => course._id !== courseId));
   };
 
