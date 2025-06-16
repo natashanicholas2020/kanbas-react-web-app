@@ -22,3 +22,8 @@ export const updateUser = async (user: any) => {
     return response.data;
   };
   
+export const signout = async () => {
+    const response = await axios.post(`${USERS_API}/signout`);
+    return response.data;
+  };
+  
