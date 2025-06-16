@@ -12,6 +12,7 @@ import { setModules, addModule, editModule, updateModule, deleteModule }
   from "./reducer";
 import { useSelector, useDispatch } from "react-redux";
 import * as coursesClient from "../client";
+import * as modulesClient from "./client";
 
 export default function Modules() {
   const { cid } = useParams();
@@ -21,6 +22,11 @@ export default function Modules() {
   const { modules } = useSelector((state: any) => state.modulesReducer);
 
   const dispatch = useDispatch();
+
+  const removeModule = async (moduleId: string) => {
+    await modulesClient.deleteModule(moduleId);
+    dispatch(deleteModule(moduleId));
+  };
 
   const createModuleForCourse = async () => {
     if (!cid) return;
@@ -66,9 +72,7 @@ export default function Modules() {
                     defaultValue={module.name}/>
             )}
                 <ModuleControlButtons moduleId={module._id}
-                  deleteModule={(moduleId) => {
-                    dispatch(deleteModule(moduleId));
-                  }}
+                  deleteModule={(moduleId) => removeModule(moduleId)}
                   editModule={(moduleId) => dispatch(editModule(moduleId))} />
             </div>
             {module.lessons && (
