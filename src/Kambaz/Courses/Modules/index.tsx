@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import ModulesControls from "./ModulesControls";
 import ModuleControlButtons from "./ModuleControlButtons";
 import LessonControlButtons from "./LessonControlButtons";
@@ -8,9 +8,10 @@ import { useParams } from "react-router";
 import * as db from "../../Database";
 import { v4 as uuidv4 } from "uuid";
 import { FormControl } from "react-bootstrap";
-import { addModule, editModule, updateModule, deleteModule }
+import { setModules, addModule, editModule, updateModule, deleteModule }
   from "./reducer";
 import { useSelector, useDispatch } from "react-redux";
+import * as coursesClient from "../client";
 
 export default function Modules() {
   const { cid } = useParams();
@@ -20,6 +21,16 @@ export default function Modules() {
   const { modules } = useSelector((state: any) => state.modulesReducer);
 
   const dispatch = useDispatch();
+
+  const fetchModules = async () => {
+    const modules = await coursesClient.findModulesForCourse(cid as string);
+    dispatch(setModules(modules));
+  };
+
+  useEffect(() => {
+    fetchModules();
+  }, []);
+
 
   return (
     <div>
@@ -31,7 +42,6 @@ export default function Modules() {
       <br /><br /><br />
       <ListGroup className="rounded-0" id="wd-modules">
       {modules
-          .filter((module: any) => module.course === cid)
           .map((module: any) => (
           <ListGroup.Item className="wd-module p-0 mb-5 fs-5 border-gray">
             <div className="wd-title p-3 ps-2 bg-secondary">
