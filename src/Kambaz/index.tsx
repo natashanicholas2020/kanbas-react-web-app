@@ -4,17 +4,17 @@ import Dashboard from "./Dashboard";
 import KambazNavigation from "./Navigation";
 import Courses from "./Courses";
 import "./styles.css";
-import { useState } from "react";
 //import { v4 as uuidv4 } from "uuid";
 import ProtectedRoute from "./Account/ProtectedRoute";
 import Session from "./Account/Session";
 import * as courseClient from "./Courses/client";
 import * as userClient from "./Account/client";
-import { useSelector } from "react-redux"; 
-import { useEffect } from "react";       
+import { useSelector } from "react-redux";  
+import { useEffect, useState } from "react";
 
 
 export default function Kambaz() {
+
   const [courses, setCourses] = useState<any[]>([]);
 
   const [course, setCourse] = useState<any>({
@@ -23,7 +23,7 @@ export default function Kambaz() {
   });
 
   const addNewCourse = async () => {
-    const newCourse = await userClient.createCourse(course);
+    const newCourse = await courseClient.createCourse(course);
     setCourses([ ...courses, newCourse ]);
   };
 
