@@ -1,14 +1,8 @@
 import { Table } from "react-bootstrap";
 import { FaUserCircle } from "react-icons/fa";
-import { useParams } from "react-router-dom";
 import { users, enrollments } from "../../Database";
 
-export default function PeopleTable() {
-    const { cid } = useParams();
-
-    const filteredUsers = (users as any[]).filter((usr) =>
-    enrollments.some((enr: any) => enr.user === usr._id && enr.course === cid)
-  );
+export default function PeopleTable({ users = [] }: { users?: any[] }) {
 
   return (
     <div id="wd-people-table">
@@ -24,7 +18,7 @@ export default function PeopleTable() {
           </tr>
         </thead>
         <tbody>
-          {filteredUsers.map((user) => (
+          {users.map((user: any) => (
             <tr key={user._id}>
               <td className="wd-full-name text-nowrap">
                 <FaUserCircle className="me-2 fs-1 text-secondary" />
