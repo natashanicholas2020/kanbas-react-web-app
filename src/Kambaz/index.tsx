@@ -22,6 +22,18 @@ export default function Kambaz() {
     startDate: "2023-09-10", endDate: "2023-12-15", description: "New Description",
   });
 
+  const [enrolling, setEnrolling] = useState<boolean>(false);
+
+  const findCoursesForUser = async () => {
+    try {
+      const courses = await userClient.findCoursesForUser(currentUser._id);
+      setCourses(courses);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+
   const addNewCourse = async () => {
     const newCourse = await courseClient.createCourse(course);
     setCourses([ ...courses, newCourse ]);
@@ -49,15 +61,30 @@ export default function Kambaz() {
 
   const fetchCourses = async () => {
     try {
-      const courses = await courseClient.fetchAllCourses();
+      const allCourses = await courseClient.fetchAllCourses();
+      const enrolledCourses = await userClient.findCoursesForUser(
+        currentUser._id
+      );
+      const courses = allCourses.map((course: any) => {
+        if (enrolledCourses.find((c: any) => c._id === course._id)) {
+          return { ...course, enrolled: true };
+        } else {
+          return course;
+        }
+      });
       setCourses(courses);
     } catch (error) {
       console.error(error);
     }
   };
+
   useEffect(() => {
-    fetchCourses();
-  }, [currentUser]);
+       if (enrolling) {
+     fetchCourses();
+   } else {
+     findCoursesForUser();
+   }
+ }, [currentUser, enrolling]);
 
 
   return (
@@ -76,7 +103,8 @@ export default function Kambaz() {
                 setCourse={setCourse}
                 addNewCourse={addNewCourse}
                 deleteCourse={deleteCourse}
-                updateCourse={updateCourse}/>
+                updateCourse={updateCourse}
+                enrolling={enrolling} setEnrolling={setEnrolling}/>
                 </ProtectedRoute>
             } />
             <Route path="Courses/:cid/*" element={<ProtectedRoute><Courses courses={courses} /></ProtectedRoute>} />
