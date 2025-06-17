@@ -57,6 +57,11 @@ export default function Modules() {
     dispatch(addModule(newModule));
     setModuleName("");
   };
+
+  const deleteModuleHandler = async (moduleId: string) => {
+    await modulesClient.deleteModule(moduleId);
+    dispatch(deleteModule(moduleId));
+  }; 
  
   useEffect(() => {
     fetchModulesForCourse();
@@ -91,7 +96,7 @@ export default function Modules() {
                     defaultValue={module.name}/>
             )}
                 <ModuleControlButtons moduleId={module._id}
-                  deleteModule={(moduleId) => removeModule(moduleId)}
+                  deleteModule={(moduleId) => deleteModuleHandler(moduleId)}
                   editModule={(moduleId) => dispatch(editModule(moduleId))} />
             </div>
             {module.lessons && (
