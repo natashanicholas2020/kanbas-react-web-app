@@ -12,6 +12,7 @@ import { useSelector, useDispatch } from "react-redux";
 import * as coursesClient from "../client";
 import * as modulesClient from "./client";
 
+
 export default function Modules() {
   const { cid } = useParams();
 
@@ -43,9 +44,14 @@ export default function Modules() {
     dispatch(setModules(modules));
   };
 
+  const fetchModulesForCourse = async () => {
+    const modules = await coursesClient.findModulesForCourse(cid!);
+    dispatch(setModules(modules));
+  };
   useEffect(() => {
-    fetchModules();
-  }, []);
+    fetchModulesForCourse();
+  }, [cid]);
+ 
 
 
   return (
