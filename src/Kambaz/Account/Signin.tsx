@@ -43,7 +43,6 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { setCurrentUser } from "./reducer";
 import { useDispatch } from "react-redux";
-import * as db from "../Database";
 import { FormControl, Button } from "react-bootstrap";
 import * as client from "./client";
 
@@ -58,7 +57,7 @@ export default function Signin() {
     dispatch(setCurrentUser(user));
     navigate("/Kambaz/Dashboard");
   };
-  
+
   return (
     <div id="wd-signin-screen">
       <h1>Sign in</h1>

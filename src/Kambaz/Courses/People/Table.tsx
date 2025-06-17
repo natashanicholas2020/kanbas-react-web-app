@@ -1,6 +1,5 @@
 import { Table } from "react-bootstrap";
 import { FaUserCircle } from "react-icons/fa";
-import { users, enrollments } from "../../Database";
 import PeopleDetails from "./Details";
 import { Link } from "react-router-dom";
 

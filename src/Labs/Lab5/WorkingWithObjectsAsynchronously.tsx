@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import * as client from "./client";
-import { FormControl, FormCheck} from "react-bootstrap"; 
+import { FormControl } from "react-bootstrap"; 
 
 export default function WorkingWithObjectsAsynchronously() {
   const [assignment, setAssignment] = useState<any>({});

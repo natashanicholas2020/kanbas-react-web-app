@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import {ListGroup, FormControl} from "react-bootstrap";
 import { FaTrash } from "react-icons/fa";
 import { FaPlusCircle } from "react-icons/fa";

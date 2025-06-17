@@ -32,8 +32,8 @@
 
 import { FaPlus } from "react-icons/fa6";
 import { Button, FormControl } from "react-bootstrap";
-import React, { useState } from "react";
-import AssignmentEditor from "./Editor";  // Assuming you have a modal editor like ModuleEditor
+import { useState } from "react";
+import AssignmentEditor from "./Editor"; 
 
 export default function AssignmentControls(
   { assignmentTitle, setAssignmentTitle, addAssignment }:
@@ -82,7 +82,6 @@ export default function AssignmentControls(
         </Button>
       </h3>
 
-      {/* Assuming AssignmentEditor is a modal similar to ModuleEditor */}
       <AssignmentEditor
         show={show}
         handleClose={handleClose}

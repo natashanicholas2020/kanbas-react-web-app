@@ -4,10 +4,10 @@ import { useSelector } from "react-redux";
 export default function AccountNavigation() {
   const { currentUser } = useSelector((state: any) => state.accountReducer);
 
-  const links = currentUser ? ["Profile"] : ["Signin", "Signup"];
+  //const links = currentUser ? ["Profile"] : ["Signin", "Signup"];
 
   const { pathname } = useLocation();
-  
+
   const active = (path: string) => (pathname.includes(path) ? "active" : "");
   
   return (
