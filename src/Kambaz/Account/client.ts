@@ -74,4 +74,15 @@ export const findUsersByPartialName = async (name: string) => {
     const response = await axios.post(`${USERS_API}`, user);
     return response.data;
   };
+
+  export const enrollIntoCourse = async (userId: string, courseId: string) => {
+    const response = await axiosWithCredentials.post(`${USERS_API}/${userId}/courses/${courseId}`);
+    return response.data;
+   };
+   
+   export const unenrollFromCourse = async (userId: string, courseId: string) => {
+    const response = await axiosWithCredentials.delete(`${USERS_API}/${userId}/courses/${courseId}`);
+    return response.data;
+   };
+   
   

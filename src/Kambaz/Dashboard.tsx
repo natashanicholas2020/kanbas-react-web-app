@@ -14,7 +14,8 @@ export default function Dashboard(
     deleteCourse,
     updateCourse,
     enrolling,
-    setEnrolling
+    setEnrolling,
+    updateEnrollment 
   }: {
     courses: any[];
     course: any;
@@ -24,6 +25,7 @@ export default function Dashboard(
     updateCourse: () => void;
     enrolling: boolean;
     setEnrolling: React.Dispatch<React.SetStateAction<boolean>>;
+    updateEnrollment: (courseId: string, enrolled: boolean) => void 
   }
 ) {
   const { currentUser } = useSelector((state: any) => state.accountReducer);
@@ -113,7 +115,11 @@ export default function Dashboard(
                   <div className="card-body">
                     <h5 className="card-title text-nowrap overflow-hidden">
                     {enrolling && (
-              <button className={`btn ${ course.enrolled ? "btn-danger" : "btn-success" } float-end`} >
+              <button onClick={(event) => {
+                        event.preventDefault();
+                        updateEnrollment(course._id, !course.enrolled);
+                      }}
+                      className={`btn ${ course.enrolled ? "btn-danger" : "btn-success" } float-end`} >
                 {course.enrolled ? "Unenroll" : "Enroll"}
               </button>
             )}
