@@ -62,6 +62,11 @@ export default function Modules() {
     await modulesClient.deleteModule(moduleId);
     dispatch(deleteModule(moduleId));
   }; 
+
+  const updateModuleHandler = async (module: any) => {
+    await modulesClient.updateModule(module);
+    dispatch(updateModule(module));
+  }; 
  
   useEffect(() => {
     fetchModulesForCourse();
@@ -84,13 +89,11 @@ export default function Modules() {
             { module.editing && (
               <FormControl className="w-50 d-inline-block"
               onChange={(e) =>
-                dispatch(
-                  updateModule({ ...module, name: e.target.value })
-                )
+                updateModuleHandler({ ...module, name: e.target.value }) 
               }
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
-                  saveModule({ ...module, editing: false });
+                  updateModuleHandler({ ...module, editing: false });
                 }
               }}
                     defaultValue={module.name}/>
