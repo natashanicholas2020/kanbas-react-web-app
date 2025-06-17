@@ -48,6 +48,16 @@ export default function Modules() {
     const modules = await coursesClient.findModulesForCourse(cid!);
     dispatch(setModules(modules));
   };
+
+  const addModuleHandler = async () => {
+    const newModule = await coursesClient.createModuleForCourse(cid!, {
+      name: moduleName,
+      course: cid,
+    });
+    dispatch(addModule(newModule));
+    setModuleName("");
+  };
+ 
   useEffect(() => {
     fetchModulesForCourse();
   }, [cid]);
@@ -57,7 +67,7 @@ export default function Modules() {
   return (
     <div>
         <ModulesControls moduleName={moduleName} setModuleName={setModuleName}
-          addModule={createModuleForCourse} />
+          addModule={addModuleHandler} />
       <br /><br /><br />
       <ListGroup className="rounded-0" id="wd-modules">
       {modules
