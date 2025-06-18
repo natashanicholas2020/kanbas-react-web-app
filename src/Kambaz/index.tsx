@@ -96,12 +96,15 @@ export default function Kambaz() {
   };
 
   useEffect(() => {
-       if (enrolling) {
-     fetchCourses();
-   } else {
-     findCoursesForUser();
-   }
- }, [currentUser, enrolling]);
+    if (!currentUser) return;
+  
+    if (enrolling) {
+      fetchCourses();
+    } else {
+      findCoursesForUser();
+    }
+  }, [currentUser, enrolling]);
+  
 
 
   return (
