@@ -52,19 +52,36 @@ export default function Signin() {
   const navigate = useNavigate();
 
   const signin = async () => {
-    const user =  await client.signin(credentials);
-    if (!user) return;
-    dispatch(setCurrentUser(user));
-    navigate("/Kambaz/Dashboard");
+    if (!credentials.username || !credentials.password) {
+      alert("Please enter both username and password.");
+      return;
+    }
+  
+    console.log("Sending credentials:", credentials); // ✅ Add this here
+  
+    try {
+      const user = await client.signin(credentials);
+      if (!user) return;
+      dispatch(setCurrentUser(user));
+      navigate("/Kambaz/Dashboard");
+    } catch (err: any) {
+      if (err.response?.status === 401) {
+        alert("Invalid username or password.");
+      } else {
+        console.error(err);
+        alert("An error occurred. Please try again.");
+      }
+    }
   };
+  
 
   return (
     <div id="wd-signin-screen">
       <h1>Sign in</h1>
-      <FormControl defaultValue={credentials.username}
+      <FormControl   value={credentials.username}
              onChange={(e) => setCredentials({ ...credentials, username: e.target.value })}
              className="mb-2" placeholder="username" id="wd-username" />
-      <FormControl defaultValue={credentials.password}
+      <FormControl   value={credentials.password}
              onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
              className="mb-2" placeholder="password" type="password" id="wd-password" />
       <Button onClick={signin} id="wd-signin-btn" className="w-100" > Sign in </Button>
